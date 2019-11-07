@@ -5,6 +5,7 @@ namespace Postpay\Tests;
 use PHPUnit\Framework\TestCase;
 use Postpay\Http\Request;
 use Postpay\Http\Response;
+use Postpay\HttpClients\Client;
 use Postpay\HttpClients\ClientInterface;
 use Postpay\Postpay;
 
@@ -26,6 +27,19 @@ class PostpayTest extends TestCase
         );
         $config = array_merge($this->config, ['client' => $client]);
         return new Postpay($config);
+    }
+
+    public function testGetClient()
+    {
+        $postpay = new Postpay($this->config);
+        self::assertInstanceOf(Client::class, $postpay->getClient());
+    }
+
+    public function testGetLastResponse()
+    {
+        $postpay = $this->mockClient();
+        $response = $postpay->get('/');
+        self::assertEquals($response, $postpay->getLastResponse());
     }
 
     public function testGet()
