@@ -2,11 +2,16 @@ checks:
   php: true
 
 build:
-  nodes:
-    analysis:
-      tests:
-        override:
-          - php-scrutinizer-run
+  environment:
+    php:
+      version: 7.3
+
+  tests:
+    override:
+      - command: vendor/bin/phpunit --coverage-clover=coverage.xml
+        coverage:
+          file: coverage.xml
+          format: clover
 
 filter:
   paths:
@@ -14,6 +19,4 @@ filter:
     - 'tests/*'
 
 tools:
-  php_code_sniffer:
-    config:
-      standard: PSR2
+  php_code_coverage: true
