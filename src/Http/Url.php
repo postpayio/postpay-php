@@ -7,7 +7,7 @@ class Url
     /**
      * Appends params to the URL.
      *
-     * @param string $path   The URL path that will receive the params.
+     * @param string $url    The URL that will receive the params.
      * @param array  $params The params to append to the URL.
      *
      * @return string
@@ -23,7 +23,7 @@ class Url
     /**
      * Check for a "/" prefix and prepend it if not exists.
      *
-     * @param string|null $string
+     * @param string|null $path
      *
      * @return string|null
      */

@@ -10,7 +10,7 @@ interface ClientInterface
      * Sends a request to the server and returns the response.
      *
      * @param Request  $request Request to send.
-     * @param int|null $timeOut The timeout for the request.
+     * @param int|null $timout The timeout for the request.
      *
      * @return \Postpay\Http\Response Response from the server.
      *
