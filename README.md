@@ -20,8 +20,6 @@ require 'vendor/autoload.php';
 ## Usage
 
 ```php
-require 'vendor/autoload.php';
-
 use Postpay\Exceptions\RESTfulException;
 
 $config = array(
