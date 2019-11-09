@@ -32,7 +32,7 @@ class RequestTest extends TestCase
     public function testHeaders()
     {
         $request = new Request('GET');
-        $headers = ['Test' => true];
+        $headers = ['header' => true];
         $request->setHeaders($headers);
 
         self::assertEquals(
@@ -44,7 +44,7 @@ class RequestTest extends TestCase
     public function testParams()
     {
         $request = new Request('GET');
-        $params = ['test' => true];
+        $params = ['param' => true];
         $request->setParams($params);
 
         self::assertEquals(
