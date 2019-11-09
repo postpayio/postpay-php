@@ -2,11 +2,15 @@
 
 namespace Postpay\Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use Postpay\Exceptions\PostpayException;
 use Postpay\Http\Request;
 use Postpay\Http\Response;
 use Postpay\HttpClients\Client;
 use Postpay\HttpClients\ClientInterface;
+use Postpay\HttpClients\CurlClient;
+use Postpay\HttpClients\GuzzleClient;
 use Postpay\Postpay;
 
 class PostpayTest extends TestCase
@@ -16,65 +20,80 @@ class PostpayTest extends TestCase
         'secret_key' => 'sk',
     ];
 
-    protected function mockClient()
+    public function setUp()
     {
-        $client = $this->createMock(ClientInterface::class);
-
-        $client->method('send')->willReturnCallback(
+        $clientHandler = $this->createMock(ClientInterface::class);
+        $clientHandler->method('send')->willReturnCallback(
             function (Request $request) {
                 return new Response($request);
             }
         );
-        $config = array_merge($this->config, ['client' => $client]);
-        return new Postpay($config);
+        $this->postpay = new Postpay($this->config);
+        $this->postpay->setClientHandler($clientHandler);
+    }
+
+    public function testCredentialsRequired()
+    {
+        $this->expectException(PostpayException::class);
+        new Postpay();
     }
 
     public function testGetClient()
     {
-        $postpay = new Postpay($this->config);
-        self::assertInstanceOf(Client::class, $postpay->getClient());
+        self::assertInstanceOf(Client::class, $this->postpay->getClient());
+    }
+
+    public function testCreateClientHandler()
+    {
+        $clientHandler = $this->postpay::CreateClientHandler('curl');
+        self::assertInstanceOf(CurlClient::class, $clientHandler);
+
+        $clientHandler = $this->postpay::CreateClientHandler('guzzle');
+        self::assertInstanceOf(GuzzleClient::class, $clientHandler);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->postpay::CreateClientHandler('invalid');
     }
 
     public function testGetLastResponse()
     {
-        $postpay = $this->mockClient();
-        $response = $postpay->get('/');
-        self::assertEquals($response, $postpay->getLastResponse());
+        $response = $this->postpay->get('/');
+        self::assertEquals($response, $this->postpay->getLastResponse());
     }
 
     public function testGet()
     {
-        $response = $this->mockClient()->get('/');
+        $response = $this->postpay->get('/');
         self::assertEquals('GET', $response->getRequest()->getMethod());
     }
 
     public function testPost()
     {
-        $response = $this->mockClient()->post('/');
+        $response = $this->postpay->post('/');
         self::assertEquals('POST', $response->getRequest()->getMethod());
     }
 
     public function testPut()
     {
-        $response = $this->mockClient()->put('/');
+        $response = $this->postpay->put('/');
         self::assertEquals('PUT', $response->getRequest()->getMethod());
     }
 
     public function testPatch()
     {
-        $response = $this->mockClient()->patch('/');
+        $response = $this->postpay->patch('/');
         self::assertEquals('PATCH', $response->getRequest()->getMethod());
     }
 
     public function testDelete()
     {
-        $response = $this->mockClient()->delete('/');
+        $response = $this->postpay->delete('/');
         self::assertEquals('DELETE', $response->getRequest()->getMethod());
     }
 
     public function testQuery()
     {
-        $response = $this->mockClient()->query('{}');
+        $response = $this->postpay->query('{}');
         self::assertEquals('POST', $response->getRequest()->getMethod());
     }
 }
