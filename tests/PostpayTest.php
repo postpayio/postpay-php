@@ -15,6 +15,8 @@ use Postpay\Postpay;
 
 class PostpayTest extends TestCase
 {
+    protected $postpay;
+
     protected $config = [
         'merchant_id' => 'id',
         'secret_key' => 'sk',

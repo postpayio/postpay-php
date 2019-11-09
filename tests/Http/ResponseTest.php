@@ -9,6 +9,8 @@ use Postpay\Exceptions\RESTfulException;
 
 class ResponseTest extends TestCase
 {
+    protected $request;
+
     public function setUp()
     {
         $this->request = new Request('GET');
