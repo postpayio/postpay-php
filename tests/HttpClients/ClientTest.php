@@ -8,7 +8,7 @@ use Postpay\Http\Request;
 use Postpay\Http\Response;
 use Postpay\HttpClients\Client;
 use Postpay\HttpClients\ClientInterface;
-use Postpay\HttpClients\GuzzleClient;
+use Postpay\Postpay;
 
 class ClientTest extends TestCase
 {
@@ -25,7 +25,7 @@ class ClientTest extends TestCase
     public function testSetClientHandler()
     {
         $client = new Client();
-        $clientHandler = new GuzzleClient();
+        $clientHandler = Postpay::createClientHandler();
         $client->setClientHandler($clientHandler);
 
         self::assertEquals($clientHandler, $client->getClientHandler());
