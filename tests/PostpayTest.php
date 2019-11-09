@@ -47,14 +47,16 @@ class PostpayTest extends TestCase
 
     public function testCreateClientHandler()
     {
-        $clientHandler = $this->postpay::CreateClientHandler('curl');
+        $postpay = $this->postpay;
+
+        $clientHandler = $postpay::CreateClientHandler('curl');
         self::assertInstanceOf(CurlClient::class, $clientHandler);
 
-        $clientHandler = $this->postpay::CreateClientHandler('guzzle');
+        $clientHandler = $postpay::CreateClientHandler('guzzle');
         self::assertInstanceOf(GuzzleClient::class, $clientHandler);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->postpay::CreateClientHandler('invalid');
+        $postpay::CreateClientHandler('invalid');
     }
 
     public function testGetLastResponse()
