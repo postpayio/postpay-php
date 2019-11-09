@@ -2,9 +2,13 @@
 
 namespace Postpay;
 
+use Exception;
+use InvalidArgumentException;
 use Postpay\Exceptions\PostpayException;
 use Postpay\Http\Request;
 use Postpay\HttpClients\Client;
+use Postpay\HttpClients\ClientInterface;
+use Postpay\HttpClients\CurlClient;
 use Postpay\HttpClients\GuzzleClient;
 
 class Postpay
@@ -74,7 +78,7 @@ class Postpay
     public function __construct(array $config = [])
     {
         $config = array_merge([
-            'client' => null,
+            'client_handler' => null,
             'merchant_id' => getenv(static::MERCHANT_ID_ENV_NAME),
             'secret_key' => getenv(static::SECRET_KEY_ENV_NAME),
             'api_version' => static::DEFAULT_API_VERSION,
@@ -84,7 +88,9 @@ class Postpay
         if ((!$config['merchant_id']) or (!$config['secret_key'])) {
             throw new PostpayException('Basic credentials required.');
         }
-        $this->client = new Client($config['client'] ?: new GuzzleClient());
+        $this->client = new Client(
+            self::createClientHandler($config['client_handler'])
+        );
         $this->auth = [$config['merchant_id'], $config['secret_key']];
         $this->apiVersion = $config['api_version'];
         $this->sandbox = $config['sandbox'];
@@ -98,6 +104,50 @@ class Postpay
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * Creates a client handler.
+     *
+     * @param ClientInterface|string|null $handler
+     *
+     * @throws \Exception               If extensions aren't available.
+     * @throws InvalidArgumentException If client handler is invalid.
+     *
+     * @return ClientInterface
+     */
+    public static function createClientHandler($handler = null)
+    {
+        if ($handler instanceof ClientInterface) {
+            return $handler;
+        }
+        $handler = $handler ?: 'curl';
+
+        if ('curl' === $handler) {
+            if (!extension_loaded('curl')) {
+                throw new Exception('cURL extension must be loaded.');
+            }
+            return new CurlClient();
+        }
+        if ('guzzle' === $handler) {
+            if (!class_exists('GuzzleHttp\Client')) {
+                throw new Exception('GuzzleHttp\Client must be included.');
+            }
+            return new GuzzleClient();
+        }
+        throw new InvalidArgumentException('Invalid client handler.');
+    }
+
+    /**
+     * Sets the HTTP client handler.
+     *
+     * @param ClientInterface $clientHandler
+     */
+    public function setClientHandler($clientHandler)
+    {
+        $this->client->setClientHandler(
+            self::createClientHandler($clientHandler)
+        );
     }
 
     /**
