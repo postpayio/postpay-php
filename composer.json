@@ -21,11 +21,14 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
-        "guzzlehttp/guzzle": "~6.0"
+        "php": ">=5.6"
     },
     "require-dev": {
+        "guzzlehttp/guzzle": "~6.0",
         "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0"
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "Required for using Guzzle HTTP client"
     },
     "autoload": {
         "psr-4": {
