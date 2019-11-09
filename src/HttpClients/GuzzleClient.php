@@ -15,14 +15,14 @@ class GuzzleClient implements ClientInterface
     /**
      * @var GuzzleHttpClient The Guzzle client.
      */
-    protected $client;
+    protected $guzzleClient;
 
     /**
-     * @param GuzzleHttpClient|null $client The Guzzle client.
+     * @param GuzzleHttpClient|null $guzzleClient The Guzzle client.
      */
-    public function __construct(GuzzleHttpClient $client = null)
+    public function __construct(GuzzleHttpClient $guzzleClient = null)
     {
-        $this->client = $client ?: new GuzzleHttpClient();
+        $this->guzzleClient = $guzzleClient ?: new GuzzleHttpClient();
     }
 
     /**
@@ -39,7 +39,7 @@ class GuzzleClient implements ClientInterface
             RequestOptions::JSON => $request->json(),
         ];
         try {
-            $response = $this->client->request(
+            $response = $this->guzzleClient->request(
                 $request->getMethod(),
                 $request->getUrl(),
                 $options
@@ -47,9 +47,11 @@ class GuzzleClient implements ClientInterface
         } catch (RequestException $e) {
             throw new PostpayException($e->getMessage(), $e->getCode());
         }
-        $headers = $response->getHeaders();
-        $body = $response->getBody();
-        $statusCode = $response->getStatusCode();
-        return new Response($request, $statusCode, $headers, $body);
+        return new Response(
+            $request,
+            $response->getStatusCode(),
+            $response->getHeaders(),
+            $response->getBody()
+        );
     }
 }
