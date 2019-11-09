@@ -28,7 +28,7 @@ class GuzzleClient implements ClientInterface
     /**
      * @inheritdoc
      */
-    public function send(Request $request, $timeout)
+    public function send(Request $request, $timeout = null)
     {
         $options = [
             'auth' => $request->getAuth(),
