@@ -29,7 +29,7 @@ class Request
     /**
      * @var array The basic auth credentials.
      */
-    protected $auth;
+    protected $auth = [];
 
     /**
      * @var array The headers to send with the request.
@@ -54,36 +54,27 @@ class Request
     /**
      * Creates a new Request entity.
      *
-     * @param string|null $method
+     * @param string      $method
      * @param string|null $path
-     * @param array|null  $params
-     * @param array|null  $auth
+     * @param array       $params
+     * @param array       $auth
+     * @param string|null $apiVersion
      * @param bool        $sandbox
      */
     public function __construct(
-        $method = null,
+        $method,
         $path = null,
         array $params = [],
-        $auth = null,
+        array $auth = [],
         $apiVersion = null,
         $sandbox = false
     ) {
-        $this->auth = $auth;
         $this->setMethod($method);
         $this->path = $path;
         $this->params = $params;
+        $this->auth = $auth;
         $this->apiVersion = $apiVersion ?: Postpay::DEFAULT_API_VERSION;
         $this->sandbox = $sandbox;
-    }
-
-    /**
-     * Return the basic auth credentials.
-     *
-     * @return array|null
-     */
-    public function getAuth()
-    {
-        return $this->auth;
     }
 
     /**
@@ -114,6 +105,26 @@ class Request
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Return the basic auth credentials.
+     *
+     * @return array|null
+     */
+    public function getAuth()
+    {
+        return $this->auth;
+    }
+
+    /**
+     * Set the basic auth credentials.
+     *
+     * @param array $auth
+     */
+    public function setAuth(array $auth)
+    {
+        $this->auth = $auth;
     }
 
     /**
@@ -162,6 +173,16 @@ class Request
     }
 
     /**
+     * Set the params.
+     *
+     * @param array $params
+     */
+    public function setParams(array $params)
+    {
+        $this->params = $params;
+    }
+
+    /**
      * Return JSON params on POST requests.
      *
      * @return array
@@ -182,6 +203,16 @@ class Request
     public function getApiVersion()
     {
         return $this->apiVersion;
+    }
+
+    /**
+     * Set the API version.
+     *
+     * @param string $apiVersion
+     */
+    public function setApiVersion($apiVersion)
+    {
+        $this->apiVersion = $apiVersion;
     }
 
     /**
