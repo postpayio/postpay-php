@@ -35,7 +35,10 @@ class RequestTest extends TestCase
         $headers = ['Test' => true];
         $request->setHeaders($headers);
 
-        self::assertArraySubset($headers, $request->getHeaders());
+        self::assertEquals(
+            array_intersect($headers, $request->getHeaders()),
+            $headers
+        );
     }
 
     public function testParams()
@@ -44,7 +47,10 @@ class RequestTest extends TestCase
         $params = ['test' => true];
         $request->setParams($params);
 
-        self::assertArraySubset($params, $request->getParams());
+        self::assertEquals(
+            array_intersect($params, $request->getParams()),
+            $params
+        );
     }
 
     public function testJson()
