@@ -40,7 +40,7 @@ try {
 print_r($response->json());
 ```
 
-## GraphQL Queries
+## GraphQL
 
 ```php
 use Postpay\Exceptions\GraphQLException;
