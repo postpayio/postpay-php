@@ -42,7 +42,7 @@ class CurlClientTest extends TestCase
         $client = new CurlClient($curl);
 
         $this->expectException(PostpayException::class);
-        $response = $client->send(new Request('POST'));
+        $client->send(new Request('POST'));
     }
 
     public function testGetRequestHeaders()
