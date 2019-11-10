@@ -16,7 +16,7 @@ class Postpay
     /**
      * @const string Version number of the Postpay SDK.
      */
-    const VERSION = '0.0.1';
+    const VERSION = '0.0.2';
 
     /**
      * @const string Default API version for requests.
