@@ -14,4 +14,7 @@
 .php_cs.cache
 composer.lock
 phpunit.xml
+docs/_build
+docs/html
+docs/xml
 vendor/
