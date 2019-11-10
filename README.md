@@ -2,11 +2,14 @@
   <a href="https://github.com/postpayio/postpay-php/releases"><img src="https://img.shields.io/github/release/postpayio/postpay-php.svg" alt="Latest Version" /></a> <a href="https://travis-ci.org/postpayio/postpay-php"><img src="https://img.shields.io/travis/postpayio/postpay-php.svg" alt="Build Status" /></a> <a href="https://scrutinizer-ci.com/g/postpayio/postpay-php/"><img src="https://scrutinizer-ci.com/g/postpayio/postpay-php/badges/quality-score.png?b=master" alt="Scrutinizer" /></a> <a href="https://scrutinizer-ci.com/g/postpayio/postpay-php/"><img src="https://scrutinizer-ci.com/g/postpayio/postpay-php/badges/coverage.png?b=master" alt="Coverage" /></a>
 </p>
 
-# Postpay, PHP HTTP client
+# Postpay SDK for PHP
+
+PHP library for the [postpay](https://postpay.io) API.
 
 ## Installation
 
-The recommended way to install *Postpay* is through [Composer](http://getcomposer.org):
+The recommended way to install [postpay](https://postpay.io) is through [Composer](https://getcomposer.org/):
+
 ```sh
 composer require postpay/postpay-php
 ```
@@ -17,22 +20,32 @@ After installing, you need to require Composer's autoloader:
 require 'vendor/autoload.php';
 ```
 
-## Usage
+## Quickstart
+
+All configs are passed around as a single variable `config`:
+
+```php
+$postpay = new \Postpay\Postpay([
+    'merchant_id' => 'id_ ...',
+    'secret_key' => 'sk_live_ ...',
+]);
+```
+
+## RESTful
+
+For information about Postpay's RESTful API, see the [API documentation](https://docs.postpay.io).
+
+$params = [
+    'status' => 'captured',
+];
 
 ```php
 use Postpay\Exceptions\RESTfulException;
 
-$config = array(
-    'merchant_id' => 'id_<merchant_id>',
-    'secret_key' => 'sk_live_<secret_key>',
-);
-
-$postpay = new \Postpay\Postpay($config);
-
 try {
-    $response = $postpay->get('/orders');
+    $response = $postpay->get('/orders', $params);
 } catch (RESTfulException $e) {
-    echo $e->getMessage();
+    echo $e->getErrorCode();
     exit;
 }
 print_r($response->json());
@@ -40,10 +53,10 @@ print_r($response->json());
 
 ## GraphQL
 
+For information about Postpay's GraphQL API, see the [API documentation](https://docs.postpay.io/graphql).
+
 ```php
 use Postpay\Exceptions\GraphQLException;
-
-$postpay = new \Postpay\Postpay($config);
 
 $query = <<<'QUERY'
 query OrderList($status: String!) {
@@ -58,13 +71,13 @@ query OrderList($status: String!) {
 QUERY;
 
 $variables = [
-    'status': 'captured',
+    'status' => 'captured',
 ];
 
 try {
     $response = $postpay->query($query, $variables);
 } catch (GraphQLException $e) {
-    echo $e->getMessage();
+    print_r($e->getErrors());
     exit;
 }
 print_r($response->json());
@@ -72,12 +85,16 @@ print_r($response->json());
 
 ## Sandbox
 
-```php
-$config = array(
-    'sandbox' => true,
-    'merchant_id' => 'id_<merchant_id>',
-    'secret_key' => 'sk_test_<secret_key>',
-);
+Set `sandbox` config variable to `true` for sandbox requests:
 
-$postpay = new \Postpay\Postpay($config);
+```php
+$postpay = new \Postpay\Postpay([
+    'sandbox' => true,
+    'merchant_id' => 'id_ ...',
+    'secret_key' => 'sk_test_ ...',
+]);
 ```
+
+## Documentation
+
+Fantastic documentation is available at [https://docs.postpay.io/php](https://docs.postpay.io/php).
