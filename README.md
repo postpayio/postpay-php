@@ -97,4 +97,4 @@ $postpay = new \Postpay\Postpay([
 
 ## Documentation
 
-Fantastic documentation is available at [https://docs.postpay.io/php](https://docs.postpay.io/php).
+Fantastic documentation is available at [https://php.postpay.io](https://php.postpay.io).
