@@ -35,12 +35,12 @@ $postpay = new \Postpay\Postpay([
 
 For information about Postpay's RESTful API, see the [API documentation](https://docs.postpay.io).
 
+```php
+use Postpay\Exceptions\RESTfulException;
+
 $params = [
     'status' => 'captured',
 ];
-
-```php
-use Postpay\Exceptions\RESTfulException;
 
 try {
     $response = $postpay->get('/orders', $params);
