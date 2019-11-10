@@ -1,6 +1,6 @@
 {
     "name": "postpay/postpay-php",
-    "description": "postpay PHP HTTP client",
+    "description": "Postpay SDK for PHP",
     "keywords": [
         "api",
         "client",
