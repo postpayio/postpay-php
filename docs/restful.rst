@@ -50,6 +50,7 @@ For more information about *Capture*, see `API docs <https://docs.postpay.io/v1/
         echo $e->getErrorCode();
         exit;
     }
+    print_r($response->json());
 
 Refund
 ------
@@ -70,3 +71,4 @@ For more information about *Refund*, see `API docs <https://docs.postpay.io/v1/#
         echo $e->getErrorCode();
         exit;
     }
+    print_r($response->json());
