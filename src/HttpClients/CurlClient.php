@@ -46,7 +46,7 @@ class CurlClient implements ClientInterface
             CURLOPT_HEADERFUNCTION => $headerCallback,
         ];
         if ($request->getMethod() !== 'GET') {
-            $options[CURLOPT_POSTFIELDS] = $request->json();
+            $options[CURLOPT_POSTFIELDS] = json_encode($request->json());
         }
         $this->curl->setOptArray($options);
         $raw = $this->curl->execute();
