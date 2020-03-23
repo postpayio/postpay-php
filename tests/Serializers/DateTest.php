@@ -13,7 +13,7 @@ class DateTest extends TestCase
         $datetime = new DateTime();
         $date = Date::fromDateTime($datetime);
 
-        self::assertGreaterThan($date->toDateTime(), $datetime);
+        self::assertGreaterThanOrEqual($date->toDateTime(), $datetime);
     }
 
     public function testFromDate()
