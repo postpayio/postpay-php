@@ -3,9 +3,9 @@
 namespace Postpay\Tests\Http;
 
 use PHPUnit\Framework\TestCase;
+use Postpay\Exceptions\RESTfulException;
 use Postpay\Http\Request;
 use Postpay\Http\Response;
-use Postpay\Exceptions\RESTfulException;
 
 class ResponseTest extends TestCase
 {

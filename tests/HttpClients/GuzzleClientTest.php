@@ -3,11 +3,11 @@
 namespace Postpay\Tests\HttpClients;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\Psr7\Response as GuzzleResponse;
+use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use PHPUnit\Framework\TestCase;
 use Postpay\Exceptions\PostpayException;
 use Postpay\Http\Request;

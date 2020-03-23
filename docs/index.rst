@@ -20,11 +20,12 @@ Postpay SDK for PHP
 PHP library for the `postpay <https://postpay.io>`__ API.
 
 .. toctree::
-   :maxdepth: 3
+    :maxdepth: 3
 
-   installation
-   quickstart
-   restful
-   graphql
-   sandbox
-   changelog
+    installation
+    quickstart
+    restful
+    graphql
+    sandbox
+    serializers
+    changelog
