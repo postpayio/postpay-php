@@ -4,7 +4,7 @@ Serializers
 Date
 ----
 
-Serializes a date object to a value that can be serialized natively by `json_encode()`_.
+Creates a ``Date`` instance that can be serialized natively by `json_encode()`_.
 
 .. code-block:: php
 
@@ -28,7 +28,7 @@ Serializes a date object to a value that can be serialized natively by `json_enc
 Decimal
 -------
 
-Serializes a float to `decimal <https://docs.postpay.io/v1/#data-types>`__ that can be serialized natively by `json_encode()`_.
+Creates a `Decimal <https://docs.postpay.io/v1/#data-types>`__ instance that can be serialized natively by `json_encode()`_.
 
 .. code-block:: php
 
