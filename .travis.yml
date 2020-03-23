@@ -26,4 +26,5 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction
 
 script:
-  - make test
+  - composer run-script test
+  - composer run-script phpcs

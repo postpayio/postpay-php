@@ -25,7 +25,8 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "~6.0",
-        "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0"
+        "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+        "squizlabs/php_codesniffer": "~3.5.3"
     },
     "suggest": {
         "guzzlehttp/guzzle": "Required for using Guzzle HTTP client"
@@ -39,5 +40,25 @@
         "psr-4": {
             "Postpay\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ],
+        "coverage": [
+            "phpunit --coverage-text"
+        ],
+        "phpcs": [
+            "phpcs -s -p"
+        ],
+        "phpcbf": [
+            "phpcbf -p"
+        ],
+        "analyse": [
+            "phpstan analyse"
+        ],
+        "fix": [
+            "php-cs-fixer fix"
+        ]
     }
 }
