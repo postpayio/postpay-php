@@ -11,7 +11,7 @@ author = 'postpay'
 
 copyright = f'{datetime.datetime.today().year}, {author}'
 
-version = '0.0.3'
+version = '0.0.4'
 release = version
 
 extensions = [

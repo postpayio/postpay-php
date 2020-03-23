@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.0.4
+-----
+
+* Added JsonSerializable classes
+
 0.0.3
 -----
 
