@@ -14,7 +14,7 @@ class Response
 
     /**
      * @var int The HTTP response status code.
-     */    
+     */
     protected $statusCode;
 
     /**
