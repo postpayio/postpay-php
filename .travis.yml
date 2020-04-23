@@ -23,7 +23,7 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer install --prefer-dist --no-interaction
+  - travis_retry composer install -n --prefer-dist
 
 script:
   - composer run-script test
