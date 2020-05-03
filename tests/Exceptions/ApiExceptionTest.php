@@ -15,6 +15,6 @@ class ApiExceptionTest extends TestCase
         $response = new Response($request);
         $exc = new RESTfulException($response);
 
-        self::assertEquals($response, $exc->getResponse());
+        self::assertSame($response, $exc->getResponse());
     }
 }

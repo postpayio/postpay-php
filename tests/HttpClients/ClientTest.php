@@ -28,7 +28,7 @@ class ClientTest extends TestCase
         $clientHandler = Postpay::createClientHandler();
         $client->setClientHandler($clientHandler);
 
-        self::assertEquals($clientHandler, $client->getClientHandler());
+        self::assertSame($clientHandler, $client->getClientHandler());
     }
 
     public function testRequest()

@@ -19,6 +19,6 @@ class GraphQLExceptionTest extends TestCase
         $response = new Response($request, 400, [], $body);
         $exc = new GraphQLException($response);
 
-        self::assertEquals($errors, $exc->getErrors());
+        self::assertSame($errors, $exc->getErrors());
     }
 }

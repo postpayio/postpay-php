@@ -20,7 +20,7 @@ class DateTest extends TestCase
     {
         $datetime = new DateTime();
         $date = Date::fromDate($datetime);
-        
+
         self::assertGreaterThan($date->toDateTime(), $datetime);
     }
 
@@ -28,8 +28,8 @@ class DateTest extends TestCase
     {
         $datetime = new DateTime();
         $date = Date::fromDateTime($datetime);
-        
-        self::assertEquals(
+
+        self::assertSame(
             $date->jsonSerialize(),
             trim(json_encode($date), '"')
         );

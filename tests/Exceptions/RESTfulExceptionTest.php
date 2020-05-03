@@ -20,6 +20,6 @@ class RESTfulExceptionTest extends TestCase
         $response = new Response($request, 400, [], $body);
         $exc = new RESTfulException($response);
 
-        self::assertEquals('test', $exc->getErrorCode());
+        self::assertSame('test', $exc->getErrorCode());
     }
 }

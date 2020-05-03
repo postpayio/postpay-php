@@ -62,42 +62,42 @@ class PostpayTest extends TestCase
     public function testGetLastResponse()
     {
         $response = $this->postpay->get('/');
-        self::assertEquals($response, $this->postpay->getLastResponse());
+        self::assertSame($response, $this->postpay->getLastResponse());
     }
 
     public function testGet()
     {
         $response = $this->postpay->get('/');
-        self::assertEquals('GET', $response->getRequest()->getMethod());
+        self::assertSame('GET', $response->getRequest()->getMethod());
     }
 
     public function testPost()
     {
         $response = $this->postpay->post('/');
-        self::assertEquals('POST', $response->getRequest()->getMethod());
+        self::assertSame('POST', $response->getRequest()->getMethod());
     }
 
     public function testPut()
     {
         $response = $this->postpay->put('/');
-        self::assertEquals('PUT', $response->getRequest()->getMethod());
+        self::assertSame('PUT', $response->getRequest()->getMethod());
     }
 
     public function testPatch()
     {
         $response = $this->postpay->patch('/');
-        self::assertEquals('PATCH', $response->getRequest()->getMethod());
+        self::assertSame('PATCH', $response->getRequest()->getMethod());
     }
 
     public function testDelete()
     {
         $response = $this->postpay->delete('/');
-        self::assertEquals('DELETE', $response->getRequest()->getMethod());
+        self::assertSame('DELETE', $response->getRequest()->getMethod());
     }
 
     public function testQuery()
     {
         $response = $this->postpay->query('{}');
-        self::assertEquals('POST', $response->getRequest()->getMethod());
+        self::assertSame('POST', $response->getRequest()->getMethod());
     }
 }

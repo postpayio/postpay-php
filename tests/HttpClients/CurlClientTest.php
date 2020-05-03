@@ -52,6 +52,6 @@ class CurlClientTest extends TestCase
         $request->setHeaders(['test' => true]);
         $headers = $curl->getRequestHeaders($request);
 
-        self::assertEquals('test: 1', $headers[0]);
+        self::assertSame('test: 1', $headers[0]);
     }
 }

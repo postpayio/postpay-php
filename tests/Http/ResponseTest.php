@@ -20,7 +20,7 @@ class ResponseTest extends TestCase
     {
         $response = new Response($this->request);
 
-        self::assertEquals($this->request, $response->getRequest());
+        self::assertSame($this->request, $response->getRequest());
     }
 
     public function testGetStatusCode()
@@ -34,7 +34,7 @@ class ResponseTest extends TestCase
         $headers = ['test' => true];
         $response = new Response($this->request, 200, $headers);
 
-        self::assertEquals($headers, $response->getHeaders());
+        self::assertSame($headers, $response->getHeaders());
     }
 
     public function testJson()
@@ -42,7 +42,7 @@ class ResponseTest extends TestCase
         $json = ['test' => true];
         $response = new Response($this->request, 200, [], json_encode($json));
 
-        self::assertEquals($json, $response->json());
+        self::assertSame($json, $response->json());
     }
 
     public function testIsError()

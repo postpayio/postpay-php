@@ -11,13 +11,13 @@ class RequestTest extends TestCase
     public function testGetMethod()
     {
         $request = new Request('get');
-        self::assertEquals('GET', $request->getMethod());
+        self::assertSame('GET', $request->getMethod());
     }
 
     public function testGetPath()
     {
         $request = new Request('GET', '/');
-        self::assertEquals('/', $request->getPath());
+        self::assertSame('/', $request->getPath());
     }
 
     public function testAuth()
@@ -26,7 +26,7 @@ class RequestTest extends TestCase
         $auth = ['user', 'password'];
         $request->setAuth($auth);
 
-        self::assertEquals($auth, $request->getAuth());
+        self::assertSame($auth, $request->getAuth());
     }
 
     public function testHeaders()
@@ -35,7 +35,7 @@ class RequestTest extends TestCase
         $headers = ['header' => true];
         $request->setHeaders($headers);
 
-        self::assertEquals(
+        self::assertSame(
             array_intersect($headers, $request->getHeaders()),
             $headers
         );
@@ -47,7 +47,7 @@ class RequestTest extends TestCase
         $params = ['param' => true];
         $request->setParams($params);
 
-        self::assertEquals(
+        self::assertSame(
             array_intersect($params, $request->getParams()),
             $params
         );
@@ -71,7 +71,7 @@ class RequestTest extends TestCase
         $version = 'v1';
         $request->setApiVersion($version);
 
-        self::assertEquals($version, $request->getApiVersion());
+        self::assertSame($version, $request->getApiVersion());
     }
 
     public function testIsGraphQL()
