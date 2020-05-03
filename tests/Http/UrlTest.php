@@ -13,7 +13,7 @@ class UrlTest extends TestCase
         $url = Url::addParamsToUrl('/', $params);
         parse_str(parse_url($url, PHP_URL_QUERY), $result);
 
-        self::assertSame($params, $result);
+        self::assertEquals($params, $result);
     }
 
     public function testSlashPrefix()

@@ -20,7 +20,7 @@ class DecimalTest extends TestCase
         $value = mt_rand();
         $decimal = Decimal::fromFloat($value);
 
-        self::assertSame(
+        self::assertEquals(
             $decimal->jsonSerialize(),
             json_encode($decimal, JSON_NUMERIC_CHECK)
         );
