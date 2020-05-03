@@ -38,7 +38,7 @@ class Decimal implements JsonSerializable
         $value,
         $decimals = self::DEFAULT_DECIMALS
     ) {
-        return new self((int) round($value * pow(10, $decimals)));
+        return new self((int) round($value * 10 ** $decimals));
     }
 
     /**
@@ -50,7 +50,7 @@ class Decimal implements JsonSerializable
      */
     public function toFloat($decimals = self::DEFAULT_DECIMALS)
     {
-        return $this->value / pow(10, $decimals);
+        return $this->value / 10 ** $decimals;
     }
 
     /**
