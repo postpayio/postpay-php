@@ -7,7 +7,7 @@ class Curl
     /**
      * @var resource Curl resource instance.
      */
-    private $ch = null;
+    private $ch;
 
     /**
      * Creates a new Curl entity.
