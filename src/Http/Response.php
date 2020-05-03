@@ -112,7 +112,7 @@ class Response
     /**
      * Returns true if API returned an error message.
      *
-     * @return boolean
+     * @return bool
      */
     public function isError()
     {
