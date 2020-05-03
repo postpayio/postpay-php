@@ -111,10 +111,10 @@ class Postpay
      *
      * @param ClientInterface|string|null $handler
      *
+     * @return ClientInterface
+     *
      * @throws \Exception               If extensions aren't available.
      * @throws InvalidArgumentException If client handler is invalid.
-     *
-     * @return ClientInterface
      */
     public static function createClientHandler($handler = null)
     {
