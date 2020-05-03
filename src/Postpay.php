@@ -85,7 +85,7 @@ class Postpay
             'sandbox' => false,
         ], $config);
 
-        if ((!$config['merchant_id']) or (!$config['secret_key'])) {
+        if ((!$config['merchant_id']) || (!$config['secret_key'])) {
             throw new PostpayException('Basic credentials required.');
         }
         $this->client = new Client(
