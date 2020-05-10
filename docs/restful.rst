@@ -72,6 +72,25 @@ For more information about *Refunds*, see `API Docs <https://docs.postpay.io/v1/
         exit;
     }
     print_r($response->json());
+
+Create a hook
+-------------
+
+For more information about *Webhooks*, see `API Docs <https://docs.postpay.io/v1/#webhooks>`__.
+
+.. code-block:: php
+
+    $payload = [
+        'active' => true,
+        'events' => [
+            'order',
+        ],
+        'url' => 'https://www.example.ae/hooks',
+        'secret' => 'dolphins',
+    ];
+
+    try {
+        $response = $postpay->post('/hooks', $payload);
     } catch (RESTfulException $e) {
         echo $e->getErrorCode();
         exit;

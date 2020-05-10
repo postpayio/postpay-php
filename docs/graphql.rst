@@ -128,3 +128,41 @@ For more information about *Refunds*, see `API Docs <https://docs.postpay.io/gra
         exit;
     }
     print_r($response->json());
+
+
+Create a hook
+-------------
+
+For more information about *Webhooks*, see `API Docs <https://docs.postpay.io/graphql/#webhooks>`__.
+
+.. code-block:: php
+
+    $query = <<<'MUTATION'
+    mutation CreateHook($input: RefundInput!) {
+      createHook(input: $input) {
+        hook {
+          events
+          url
+        }
+      }
+    }
+    MUTATION;
+
+    $variables = [
+        'input' => [
+            'active' => true,
+            'events' => [
+                'order',
+            ],
+            'url' => 'https://www.example.ae/hooks',
+            'secret' => 'dolphins',
+        ],
+    ];
+
+    try {
+        $response = $postpay->query($query, $variables);
+    } catch (GraphQLException $e) {
+        print_r($e->getErrors());
+        exit;
+    }
+    print_r($response->json());
