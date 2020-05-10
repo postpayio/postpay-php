@@ -1,7 +1,7 @@
 RESTful
 =======
 
-For information about Postpay's RESTful API, see the `API RESTful Docs <https://docs.postpay.io>`__.
+For information about Postpay's RESTful API, see the `RESTful API Docs <https://docs.postpay.io>`__.
 
 Usage
 -----

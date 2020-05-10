@@ -1,7 +1,7 @@
 GraphQL
 =======
 
-For information about Postpay's GraphQL API, see the `API GraphQL Docs <https://docs.postpay.io/graphql>`__.
+For information about Postpay's GraphQL API, see the `GraphQL API Docs <https://docs.postpay.io/graphql>`__.
 
 Usage
 -----
