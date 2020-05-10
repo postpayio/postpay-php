@@ -7,7 +7,7 @@ lexers['php'] = PhpLexer(startinline=True, linenos=1)
 lexers['php-annotations'] = PhpLexer(startinline=True, linenos=1)
 
 project = 'Postpay SDK for PHP'
-author = 'postpay'
+author = 'Postpay'
 
 copyright = f'{datetime.datetime.today().year}, {author}'
 

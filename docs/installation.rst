@@ -9,7 +9,7 @@ PHP 5.6.0 and later.
 Composer
 --------
 
-The recommended way to install `postpay <https://postpay.io>`__ is through `Composer <https://getcomposer.org/>`__::
+The recommended way to install *postpay-php* is through `Composer <https://getcomposer.org/>`__::
 
     composer require postpay/postpay-php
 

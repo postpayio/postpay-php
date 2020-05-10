@@ -17,7 +17,7 @@ Postpay SDK for PHP
     :target: https://scrutinizer-ci.com/g/postpayio/postpay-php/
     :alt: Coverage
 
-PHP library for the `postpay <https://postpay.io>`__ API.
+PHP library for `Postpay <https://postpay.io>`__ API.
 
 .. toctree::
     :maxdepth: 3

@@ -4,11 +4,11 @@
 
 # Postpay SDK for PHP
 
-PHP library for the [postpay](https://postpay.io) API.
+PHP library for [Postpay](https://postpay.io) API.
 
 ## Installation
 
-The recommended way to install [postpay](https://postpay.io) is through [Composer](https://getcomposer.org/):
+The recommended way to install *postpay-php* is through [Composer](https://getcomposer.org/):
 
 ```sh
 composer require postpay/postpay-php
