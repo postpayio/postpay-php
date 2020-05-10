@@ -28,4 +28,5 @@ PHP library for the `postpay <https://postpay.io>`__ API.
     graphql
     sandbox
     serializers
+    signature
     changelog
