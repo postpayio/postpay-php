@@ -19,8 +19,16 @@ Postpay SDK for PHP
 
 PHP library for `Postpay <https://postpay.io>`__ API.
 
+This library has been used to integrate Postpay with PHP eCommerce platforms.
+
+Check out our repositories on Github:
+
+- Magento2: `postpayio/Magento2 <https://github.com/postpayio/magento2>`__
+- WooCommerce: `postpayio/WooCommerce <https://github.com/postpayio/woocommerce>`__
+
 .. toctree::
     :maxdepth: 3
+    :hidden:
 
     installation
     quickstart

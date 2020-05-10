@@ -1,7 +1,7 @@
 GraphQL
 =======
 
-For information about Postpay's GraphQL API, see the `API documentation <https://docs.postpay.io/graphql>`__.
+For information about Postpay's GraphQL API, see the `API GraphQL Docs <https://docs.postpay.io/graphql>`__.
 
 Usage
 -----
@@ -34,10 +34,10 @@ Usage
     }
     print_r($response->json());
 
-Create Checkout
----------------
+Create a checkout
+-----------------
 
-For more information about *Create Checkout* and how to define the ``$input`` variable, see `API docs <https://docs.postpay.io/graphql/#create-a-checkout>`__.
+For more information about *Create a checkout* and how to define the ``$input`` variable, see `API Docs <https://docs.postpay.io/graphql/#create-a-checkout>`__.
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ For more information about *Create Checkout* and how to define the ``$input`` va
 Capture
 -------
 
-For more information about *Capture*, see `API docs <https://docs.postpay.io/graphql/#capture>`__.
+For more information about *Capture*, see `API Docs <https://docs.postpay.io/graphql/#capture>`__.
 
 .. code-block:: php
 
@@ -92,10 +92,10 @@ For more information about *Capture*, see `API docs <https://docs.postpay.io/gra
     }
     print_r($response->json());
 
-Refund
-------
+Create a refund
+---------------
 
-For more information about *Refund*, see `API docs <https://docs.postpay.io/graphql/#refund>`__.
+For more information about *Refunds*, see `API Docs <https://docs.postpay.io/graphql/#refunds>`__.
 
 .. code-block:: php
 

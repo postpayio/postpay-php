@@ -10,8 +10,9 @@ All configs are passed around as a single variable ``config``:
         'secret_key' => 'sk_live_ ...',
     ]);
 
-.. list-table:: Configuration variables
+.. list-table::
     :header-rows: 1
+    :widths: 25 20 55
 
     * - Name
       - Type

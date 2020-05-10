@@ -1,7 +1,7 @@
 RESTful
 =======
 
-For information about Postpay's RESTful API, see the `API documentation <https://docs.postpay.io>`__.
+For information about Postpay's RESTful API, see the `API RESTful Docs <https://docs.postpay.io>`__.
 
 Usage
 -----
@@ -22,10 +22,10 @@ Usage
     }
     print_r($response->json());
 
-Create Checkout
----------------
+Create a checkout
+-----------------
 
-For more information about *Create Checkout* and how to define the ``$payload`` variable, see `API docs <https://docs.postpay.io/v1/#create-a-checkout>`__.
+For more information about *Create a checkout* and how to define the ``$payload`` variable, see `API Docs <https://docs.postpay.io/v1/#create-a-checkout>`__.
 
 .. code-block:: php
 
@@ -40,7 +40,7 @@ For more information about *Create Checkout* and how to define the ``$payload`` 
 Capture
 -------
 
-For more information about *Capture*, see `API docs <https://docs.postpay.io/v1/#capture>`__.
+For more information about *Capture*, see `API Docs <https://docs.postpay.io/v1/#capture>`__.
 
 .. code-block:: php
 
@@ -52,10 +52,10 @@ For more information about *Capture*, see `API docs <https://docs.postpay.io/v1/
     }
     print_r($response->json());
 
-Refund
-------
+Create a refund
+---------------
 
-For more information about *Refund*, see `API docs <https://docs.postpay.io/v1/#refund>`__.
+For more information about *Refunds*, see `API Docs <https://docs.postpay.io/v1/#refunds>`__.
 
 .. code-block:: php
 
@@ -66,7 +66,12 @@ For more information about *Refund*, see `API docs <https://docs.postpay.io/v1/#
     ];
 
     try {
-        $response = $postpay->post('/orders/$order_id/refund', $payload);
+        $response = $postpay->post('/orders/$order_id/refunds', $payload);
+    } catch (RESTfulException $e) {
+        echo $e->getErrorCode();
+        exit;
+    }
+    print_r($response->json());
     } catch (RESTfulException $e) {
         echo $e->getErrorCode();
         exit;

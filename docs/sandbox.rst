@@ -12,3 +12,5 @@ Set ``sandbox`` config variable to ``true`` for sandbox requests:
     ]);
 
 Please, remember that test secret key starts with ``sk_test``.
+
+For more information about *Testing API*, see `API Docs <https://docs.postpay.io/v1/#testing>`__.
