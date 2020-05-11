@@ -34,7 +34,7 @@ def setup(app):
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'logo': 'logo.png',
+    'logo': 'images/logo.png',
     'show_powered_by': False,
     'fixed_sidebar': True,
     'github_user': 'postpayio',
