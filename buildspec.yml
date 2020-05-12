@@ -1,0 +1,12 @@
+---
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - sphinx-build -b html ./docs ./build
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
