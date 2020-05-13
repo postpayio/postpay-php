@@ -4,9 +4,18 @@ version: 0.2
 phases:
   build:
     commands:
-      - sphinx-build -b html ./docs ./build
-
-artifacts:
-  files:
-    - '**/*'
-  base-directory: build
+      - |
+        docker run --rm -i \
+          -v $PWD:/docs \
+          sphinxdoc/sphinx \
+          sphinx-build -b html docs build
+  post_build:
+    commands:
+      - |
+        aws s3 sync ./build s3://php.postpay.io \
+          --cache-control max-age=14400,public \
+          --acl public-read
+      - |
+        aws cloudfront create-invalidation \
+          --distribution-id $DISTRIBUTION_ID \
+          --paths "/*"
