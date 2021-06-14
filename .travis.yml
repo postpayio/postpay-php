@@ -6,8 +6,9 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  - 7.4snapshot
-  - nightly
+  - 7.4
+  - 8.0
+  - hhvm
 
 sudo: false
 
@@ -17,7 +18,7 @@ cache:
 
 matrix:
   allow_failures:
-    - php: nightly
+    - php: hhvm
 
 before_install:
   - travis_retry composer self-update
