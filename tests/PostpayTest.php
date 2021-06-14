@@ -22,7 +22,7 @@ class PostpayTest extends TestCase
         'secret_key' => 'sk',
     ];
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $clientHandler = $this->createMock(ClientInterface::class);
         $clientHandler->method('send')->willReturnCallback(
