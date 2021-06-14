@@ -2,6 +2,7 @@
 <ruleset name="postpay-php">
     <file>.</file>
     <exclude-pattern type="relative">vendor/*</exclude-pattern>
+    <exclude-pattern type="relative">docs/*</exclude-pattern>
     <rule ref="PSR2"/>
     <arg value="ps"/>
 </ruleset>
