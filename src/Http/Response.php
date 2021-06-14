@@ -117,7 +117,10 @@ class Response
     public function isError()
     {
         $excClassName = $this->exc;
-        return isset($this->decodedBody[$excClassName::ERROR_KEY]);
+        return (
+            $this->statusCode >= 400 or
+            isset($this->decodedBody[$excClassName::ERROR_KEY])
+        );
     }
 
     /**
