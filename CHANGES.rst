@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.1
+-----
+
+* Added statusCode error handler
+
 0.1.0
 -----
 
